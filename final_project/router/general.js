@@ -28,7 +28,7 @@ public_users.post("/register", (req,res) => {
 // Get the book list available in the shop
 public_users.get('/',async function (req, res) {
     try {
-    const response = await axios.get('http://localhost:5000/');
+    const response = await axios.get('http://localhost:8080/');
     return res.status(200).json(response.data);
   } catch (error) {
     return res.status(500).json({ message: "Error fetching books" });
@@ -41,7 +41,7 @@ public_users.get('/isbn/:isbn',async function (req, res) {
   const isbn = req.params.isbn;
 
   try {
-    const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
+    const response = await axios.get(`http://localhost:8080/isbn/${isbn}`);
     return res.status(200).json(response.data);
   } catch (error) {
     return res.status(404).json({ message: "Book not found" });
@@ -54,7 +54,7 @@ public_users.get('/author/:author',async function (req, res) {
   const author = req.params.author;
 
   try {
-    const response = await axios.get('http://localhost:5000/');
+    const response = await axios.get('http://localhost:8080/');
     const books = response.data;
 
     const filteredBooks = {};
@@ -81,7 +81,7 @@ public_users.get('/title/:title',async function (req, res) {
   const title = req.params.title;
 
   try {
-    const response = await axios.get(`http://localhost:5000/title/${title}`);
+    const response = await axios.get(`http://localhost:8080/title/${title}`);
     return res.status(200).json(response.data);
   } catch (error) {
     return res.status(404).json({ message: "Title not found" });
